@@ -28,7 +28,6 @@ function App() {
     setYeQuote(null);
     setTrumpQuote(null);
     setShowMovie(null);
-    console.log(rndmLotrQuote());
   }
 
   const fetchCrazy = async () => {
@@ -42,6 +41,7 @@ function App() {
   }
 
   const fetchYe = async () => {
+    setYeQuote(null)
     setTrumpQuote(null)
     await fetch("https://api.kanye.rest")
       .then((response) => response.json())
@@ -51,9 +51,10 @@ function App() {
 
   const fetchTrump = async () => {
     setYeQuote(null)
+    setTrumpQuote(null)
     await fetch("https://api.whatdoestrumpthink.com/api/v1/quotes")
       .then((response) => response.json())
-      .then((data) => setTrumpQuote([data]))
+      .then((data) => setTrumpQuote([data.messages.non_personalized[Math.floor(Math.random() * 49)]]))
       .catch(() => console.log('error'))
   }
 
@@ -62,13 +63,21 @@ function App() {
       setShowCrazy('winner')
       emojisplosion({
         emojiCount: 201,
-        emojis: ["🪓", "🏹", "🗡️", "⚔️", "🛡️", "👑"],
+        emojis: ["💩", "📿", "🧻", "💣", "🎆", "🎉"],
+      });
+      emojisplosion({
+        emojiCount: 201,
+        emojis: ["🎤", "🎧", "🧣", "👟", "🕶", "💥"],
       });
     } else if (answer === 'trump'){
       setShowCrazy('winner')
       emojisplosion({
         emojiCount: 201,
-        emojis: ["🪓", "🏹", "🗡️", "⚔️", "🛡️", "👑"],
+        emojis: ["💩", "🚽", "🧻", "💣", "🎆", "🎉"],
+      });
+      emojisplosion({
+        emojiCount: 201,
+        emojis: [ "🏌", "🐷", "🐖", "💥", "🍊", "🤡"],
       });
     } else if (answer === 'loser') {
       setShowCrazy('loser');
@@ -80,7 +89,7 @@ function App() {
       setShowMovie('winner');
       emojisplosion({
         emojiCount: 201,
-        emojis: ["🪓", "🏹", "🗡️", "⚔️", "🛡️", "👑"],
+        emojis: ["🍻", "🍺", "🍷", "🍗", "🍖", "🍇"],
       });
       emojisplosion({
         emojiCount: 201,
@@ -148,7 +157,7 @@ function App() {
       { trumpQuote?.map(quote => 
         <div className='quote'>
           <div className='yeQuote'>
-          <p>"{quote.messages.non_personalized[Math.floor(Math.random() * 49)]}"</p>
+          <p>"{trumpQuote}"</p>
           </div>
           { showCrazy === null &&
           <>
