@@ -35,7 +35,6 @@ export default function crazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
 
     return (
         <div className="App">
-
             {yeQuote?.map(quote =>
                 <div className='quote'>
                     <div className='yeQuote'>
