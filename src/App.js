@@ -13,6 +13,7 @@ import Ex from '@material-ui/icons/HighlightOff';
 import { green, red } from '@material-ui/core/colors';
 import { emojisplosion } from "emojisplosion";
 import gollum from './gollum.mp3'
+import CrazyQuote from './CrazyQuote';
 
 function App() {
 
@@ -58,32 +59,6 @@ function App() {
       .catch(() => console.log('error'))
   }
 
-  const crazyAnswer = (answer) => {
-    if (answer === 'ye'){
-      setShowCrazy('winner')
-      emojisplosion({
-        emojiCount: 201,
-        emojis: ["💩", "📿", "🧻", "💣", "🎆", "🎉"],
-      });
-      emojisplosion({
-        emojiCount: 201,
-        emojis: ["🎤", "🎧", "🧣", "👟", "🕶", "💥"],
-      });
-    } else if (answer === 'trump'){
-      setShowCrazy('winner')
-      emojisplosion({
-        emojiCount: 201,
-        emojis: ["💩", "🚽", "🧻", "💣", "🎆", "🎉"],
-      });
-      emojisplosion({
-        emojiCount: 201,
-        emojis: [ "🏌", "🐷", "🐖", "💥", "🍊", "🤡"],
-      });
-    } else if (answer === 'loser') {
-      setShowCrazy('loser');
-    }
-  }
-
   const movieAnswer = (answer) => {
     if (answer == lotrQuote[0].movie) {
       setShowMovie('winner');
@@ -125,63 +100,7 @@ function App() {
         </Stack>
       </div>
   
-      { yeQuote?.map(quote => 
-        <div className='quote'>
-          <div className='yeQuote'>
-          <p>"{quote.quote}"</p>
-          </div>
-          { showCrazy === null &&
-          <>
-            <p>Which crazy has this quote?</p>
-            <Stack  direction="row" spacing={3} justifyContent="center">
-              <Button style={{borderRadius: 45}} variant="outlined" size="large" color="success" onClick={() => crazyAnswer('ye')}>Ye</Button>
-              <Button style={{borderRadius: 45}} variant="outlined" size="large" color="error" onClick={() => crazyAnswer('loser')}>Donald Trump</Button>
-            </Stack>
-          </>
-          }
-          { showCrazy === 'winner' &&
-             <>
-             <p>Ye</p>
-             <Check size="large" style={{ color: green[500], fontSize: 50 }}/>
-             </>
-          }
-          { showCrazy === 'loser' &&
-          <>
-            <p>Ye</p>
-            <Ex size="large" style={{ color: red[500], fontSize: 50 }}/>
-          </>
-          }
-        </div>
-      )}
-
-      { trumpQuote?.map(quote => 
-        <div className='quote'>
-          <div className='yeQuote'>
-          <p>"{trumpQuote}"</p>
-          </div>
-          { showCrazy === null &&
-          <>
-          <p>Which crazy has this quote?</p>
-          <Stack  direction="row" spacing={3} justifyContent="center">
-            <Button style={{borderRadius: 45}} variant="outlined" size="large" color="success" onClick={() => crazyAnswer('loser')}>Ye</Button>
-            <Button style={{borderRadius: 45}} variant="outlined" size="large" color="error" onClick={() => crazyAnswer('trump')}>Donald Trump</Button>
-          </Stack>
-          </>
-          }
-          { showCrazy === 'winner' &&
-             <>
-             <p>Donald Trump</p>
-             <Check size="large" style={{ color: green[500], fontSize: 50 }}/>
-             </>
-          }
-           { showCrazy === 'loser' &&
-          <>
-            <p>Donald Trump</p>
-            <Ex size="large" style={{ color: red[500], fontSize: 50 }}/>
-          </>
-          }
-        </div>
-      )}
+     < CrazyQuote yeQuote={yeQuote} trumpQuote={trumpQuote} showCrazy={showCrazy} setShowCrazy={setShowCrazy}/>
         
       { lotrQuote?.map(quote => 
         <div className='quote'>
