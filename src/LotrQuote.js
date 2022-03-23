@@ -37,14 +37,13 @@ export default function LotrQuote({lotrQuote, showMovie, setShowMovie}) {
                         <p>"{quote.dialog}"</p>
                         <p>- {quote.char}</p>
                     </div>
-                    {/* <img src={fotr} className="movie" alt="fotr" onClick={() => setShowMovie(true)}/> */}
                     {showMovie === null &&
                         <>
                             <p>Which film has this quote?</p>
                             <Stack direction="row" spacing={3} justifyContent="center">
-                                <Button style={{ borderRadius: 45 }} variant="outlined" size="large" color="success" onClick={() => movieAnswer('The Fellowship of the Ring ')}>Fellowship of the Ring</Button>
-                                <Button style={{ borderRadius: 45 }} variant="outlined" size="large" color="error" onClick={() => movieAnswer('The Two Towers ')}>The Two Towers</Button>
-                                <Button style={{ borderRadius: 45 }} variant="outlined" size="large" color="primary" onClick={() => movieAnswer('The Return of the King ')}>Return of the King</Button>
+                                <Button style={{ borderRadius: 15 }} variant="outlined" size="large" color="warning" onClick={() => movieAnswer('The Fellowship of the Ring ')}>Fellowship of the Ring</Button>
+                                <Button style={{ borderRadius: 15 }} variant="outlined" size="large" color="warning" onClick={() => movieAnswer('The Two Towers ')}>The Two Towers</Button>
+                                <Button style={{ borderRadius: 15 }} variant="outlined" size="large" color="warning" onClick={() => movieAnswer('The Return of the King ')}>Return of the King</Button>
                             </Stack>
                         </>
                     }
