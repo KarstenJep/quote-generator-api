@@ -19,6 +19,7 @@ function App() {
     setYeQuote(null);
     setTrumpQuote(null);
     setShowMovie(null);
+    setShowCrazy(null);
   }
 
   const fetchCrazy = async () => {

@@ -10,8 +10,6 @@ import trumpW from './Images/trumpW.png';
 import ye from './Images/ye.png';
 import yeW from './Images/yeW.png';
 
-
-
 export default function crazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCrazy }) {
 
     const crazyAnswer = (answer) => {
@@ -41,35 +39,33 @@ export default function crazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
     }
 
     return (
-        <div className="App">
+        <div >
             {yeQuote?.map(quote =>
                 <div className='quote'>
                     <div className='yeQuote'>
                         <p>"{quote.quote}"</p>
                     </div>
-                    <Box mr={100}>
+                    <Box mr={105}>
                     {showCrazy === null &&
                         <>
-                        {/* <Box mr={100}> */}
                             <p>Which crazy said this?</p>
                             <Stack direction="row" spacing={3} justifyContent="center">
                                 <Button style={{ borderRadius: 45 }} variant="outlined" size="large" color="error" onClick={() => crazyAnswer('ye')}>KanYe</Button>
                                 <Button style={{ borderRadius: 45 }} variant="outlined" size="large" color="error" onClick={() => crazyAnswer('loser')}>Donald Trump</Button>
                             </Stack>
-                            
                         </>
                     }
                     {showCrazy === 'winner' &&
                         <>
-                            <p>KanYe</p>
-                            <Check size="large" style={{ color: green[500], fontSize: 50 }} />
+                            <p>- KanYe</p>
+                            <Check size="large" style={{ color: green[500], fontSize: 70 }} />
                             <img src={yeW} style={{height: '15vmin' }} alt="ye" />
                         </>
                     }
                     {showCrazy === 'loser' &&
                         <>
                             <p>- KanYe</p>
-                            <Ex size="large" style={{ color: red[500], fontSize: 50 }} />
+                            <Ex size="large" style={{ color: red[500], fontSize: 70 }} />
                             <img src={ye} style={{height: '15vmin' }} alt="ye" />
                         </>
                     }
@@ -95,14 +91,14 @@ export default function crazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
                     {showCrazy === 'winner' &&
                         <>
                             <p>- Donald Trump</p>                            
-                            <Check size="large" style={{ color: green[500], fontSize: 50 }} />
+                            <Check size="large" style={{ color: green[500], fontSize: 70 }} />
                             <img src={trumpW} style={{height: '15vmin' }} alt="trump" />  
                         </>
                     }
                     {showCrazy === 'loser' &&
                         <>
                             <p>- Donald Trump</p>
-                            <Ex size="large" style={{ color: red[500], fontSize: 50 }} />
+                            <Ex size="large" style={{ color: red[500], fontSize: 70 }} />
                             <img src={trumpL} style={{height: '15vmin' }} alt="trump" />  
                         </>
                     }

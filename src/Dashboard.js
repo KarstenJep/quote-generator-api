@@ -11,6 +11,7 @@ import Mic from '@material-ui/icons/MicNone';
 export default function Dashboard({fetchCrazy, fetchLotr}){
 
     return (
+
       <div className='container'>
         <Stack direction="row" spacing={16} justifyContent="center" divider={<Divider orientation="vertical" flexItem color="white"/>}>
           <Stack direction="column" spacing={3} alignItems="center">
