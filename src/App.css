@@ -36,7 +36,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(8px + 2vmin);
   color: white;
   text-shadow: 0 0 80px rgb(192 219 255 / 75%), 0 0 32px rgb(65 120 255 / 24%);
 }
@@ -46,9 +46,10 @@ body {
 }
 
 .movie {
-  height: 12vmin;
-  border-radius: 20px;
-  border: solid 1px yellow;
+  height: 16vmin;
+  border-radius: 15px;
+  border: solid 2px #ff8400;
+  box-shadow: 0px 0px 20px rgba(250, 112, 0, 0.843);
 }
 
 .quote {
@@ -74,8 +75,8 @@ body {
   border-radius: 15px;
   margin: 0 2%;
   padding: .5vh;
-  border: solid 2px orange;
-  box-shadow:  0px 0px 20px rgba(251, 71, 0, 0.843);
+  border: solid 2px #ff8400;
+  box-shadow:  0px 0px 20px rgba(250, 112, 0, 0.843);
 }
 
 .hpQuote {
@@ -89,7 +90,7 @@ body {
 }
 
 .container {
-  padding-bottom: 2%;
+  padding-bottom: 2.5%;
 }
 
 @keyframes App-logo-spin {

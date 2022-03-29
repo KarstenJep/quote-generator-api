@@ -94,7 +94,7 @@ export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
                     <div className='yeQuote'>
                         <p>"{quote.quote}"</p>
                     </div>
-                    <Box mr={105}>
+                    <Box mr={110}>
                     {showCrazy === null &&
                         <>
                             <h4>Which crazy said this?</h4>
@@ -127,7 +127,7 @@ export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
                     <div className='yeQuote'>
                         <p>"{quote}"</p>
                     </div>
-                    <Box mr={105} >
+                    <Box mr={110} >
                     {showCrazy === null &&
                         <>
                             <h4>Which crazy has this quote?</h4>

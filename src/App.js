@@ -1,11 +1,13 @@
 import './App.css';
 import json from './HP.json'
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import CrazyQuote from './CrazyQuote';
 import LotrQuote from './LotrQuote';
 import Dashboard from './Dashboard';
 import HP from './HPQuote';
 import Header from './Header';
+import Confetti from 'react-confetti'
+
 
 function App() {
 
@@ -16,6 +18,9 @@ function App() {
   const [lotrQuote, setLotrQuote] = useState(null);
   const [showMovie, setShowMovie] = useState(null);
   const [hpQuote, setHpQuote] = useState(null);
+  const [height, setHeight] = useState(null)
+  const [width, setWidth] = useState(null)
+  const confettiRef = useRef(null);
   
   const fetchLotr = () => {
     setLotrQuote([rndmLotrQuote()]);
@@ -30,6 +35,7 @@ function App() {
     setLotrQuote(null);
     setShowCrazy(null);
     setHpQuote(null);
+    setShowMovie(null);
     {Math.random() > .5 ?
     fetchYe()
     :
@@ -66,13 +72,22 @@ function App() {
       .catch(() => console.log('error'))
   }
 
+  useEffect(() => {
+    setHeight(confettiRef.current.clientHeight);
+    setWidth(confettiRef.current.clientWidth);
+  })
+
   return (
-    <div className="App">
+    <div className="App" ref={confettiRef}>
       <Header />
       <Dashboard fetchCrazy={fetchCrazy} fetchLotr={fetchLotr} fetchHP={fetchHP} />
       <LotrQuote lotrQuote={lotrQuote} showMovie={showMovie} setShowMovie={setShowMovie}/>
       <CrazyQuote yeQuote={yeQuote} trumpQuote={trumpQuote} showCrazy={showCrazy} setShowCrazy={setShowCrazy}/>
       <HP hpQuote={hpQuote} />
+
+      {showMovie !== null && showMovie !== 'loser' &&
+          <Confetti width={width} height={height} />
+      }
     </div>
   );
 }
