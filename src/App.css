@@ -45,11 +45,8 @@ body {
   box-shadow: rgba(var(--primary-color), 0.5) 0px 0px 20px 0px;
 }
 
-.movie {
-  height: 16vmin;
-  border-radius: 15px;
-  border: solid 2px #ff8400;
-  box-shadow: 0px 0px 20px rgba(250, 112, 0, 0.843);
+.container {
+  padding-bottom: 2.5%;
 }
 
 .quote {
@@ -79,18 +76,28 @@ body {
   box-shadow:  0px 0px 20px rgba(250, 112, 0, 0.843);
 }
 
+.movie {
+  height: 16vmin;
+  border-radius: 15px;
+  border: solid 2px #ff8400;
+  box-shadow: 0px 0px 20px rgba(250, 112, 0, 0.843);
+}
+
 .hpQuote {
   font-family:Garamond;
   color: black;
   background-color: wheat;
-  border-radius: 15px;
+  border-radius: 5px;
   margin: 0 2%;
   border: solid 2px rgb(0, 136, 255);
   box-shadow:  0px 0px 20px rgba(0, 136, 255, 0.7);
 }
 
-.container {
-  padding-bottom: 2.5%;
+.book {
+  height: 18vmin;
+  border-radius: 5px;
+  border: solid 2px  rgb(0, 136, 255);
+  box-shadow: 0px 0px 20px rgba(0, 136, 255, 0.843);
 }
 
 @keyframes App-logo-spin {

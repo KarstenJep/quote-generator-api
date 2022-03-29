@@ -2,7 +2,6 @@ import {useState, useEffect} from 'react';
 // M-UI
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import Check from '@material-ui/icons/CheckCircle';
 import Ex from '@material-ui/icons/HighlightOff';
 import { green, red } from '@material-ui/core/colors';
 // Images
@@ -91,50 +90,28 @@ export default function LotrQuote({ lotrQuote, showMovie, setShowMovie }) {
                         </>
                     }
                     {showMovie !== null &&
-
                         <h4>{quote.movie}</h4>
                     }
                     {showMovie === 'loser' &&
                         <>
-                            <img src={gollum} style={{ height: '14vmin', borderRadius: '15px', border: '1px red solid', boxShadow: '0px 0px 8px rgba(251, 0, 0, 0.8)' }} alt="fotr" />
+                            <img src={gollum} style={{ height: '14vmin', borderRadius: '15px', border: '2px red solid', boxShadow: '0px 0px 8px rgba(251, 0, 0, 0.8)' }} alt="fotr" />
                             {' '}&nbsp;
-                            <img src={orc} style={{ height: '14vmin', borderRadius: '15px', border: '1px red solid', boxShadow: '0px 0px 8px rgba(251, 0, 0, 0.8)' }} alt="fotr" />
+                            <img src={orc} style={{ height: '14vmin', borderRadius: '15px', border: '2px red solid', boxShadow: '0px 0px 8px rgba(251, 0, 0, 0.8)' }} alt="fotr" />
                             <br />
                             <Ex size="large" style={{ color: red[500], fontSize: 70 }} />
                         </>
                     }
                     {showMovie === 'The Fellowship of the Ring ' &&
-                       
                         <img src={FOTR} className="movie" alt="fotr" />
                     }
                     {showMovie === 'The Two Towers ' &&
-                        
                         <img src={TTT} className="movie" alt="ttt" />
                     }
                     {showMovie === 'The Return of the King ' &&
-                        
                         <img src={ROTK} className="movie" alt="rotk" />
                     }
-                    {/* <br /> */}
-                    {/* {showMovie !== null && showMovie !== 'loser' &&
-
-                        <Check size="large" style={{ color: green[500], fontSize: 60 }} />
-                    } */}
                 </>
             )}
         </div>
     )
 }
-
-/*  emojisplosion({
-                emojiCount: 201,
-                emojis: ["🍻", "🍺", "🍷", "🍗", "🍖", "🍇"],
-            });
-            emojisplosion({
-                emojiCount: 201,
-                emojis: ["🪓", "🏹", "🗡️", "⚔️", "🛡️", "👑"],
-            });
-            emojisplosion({
-                emojiCount: 201,
-                emojis: ["🪓", "🏹", "🗡️", "⚔️", "🛡️", "👑"],
-            }); */

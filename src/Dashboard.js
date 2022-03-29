@@ -25,7 +25,7 @@ export default function Dashboard({fetchCrazy, fetchLotr, fetchHP}){
           </Stack>
           <Stack direction="column" spacing={3} alignItems="center">
             <img src={hp} className="App-logo" alt="ring" />
-            <Button style={{borderRadius: 5, boxShadow: '0px 0px 8px rgba(0, 136, 255, 0.8)'}} variant="outlined" size="large" color="info" endIcon={<Book />} onClick={fetchHP}> HP Quote</Button>
+            <Button style={{borderRadius: 3, boxShadow: '0px 0px 8px rgba(0, 136, 255, 0.8)'}} variant="outlined" size="large" color="info" endIcon={<Book />} onClick={fetchHP}> HP Quote</Button>
           </Stack>
         </Stack>
       </div>

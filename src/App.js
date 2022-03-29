@@ -18,6 +18,7 @@ function App() {
   const [lotrQuote, setLotrQuote] = useState(null);
   const [showMovie, setShowMovie] = useState(null);
   const [hpQuote, setHpQuote] = useState(null);
+  const [showBook, setShowBook] = useState(null);
   const [height, setHeight] = useState(null)
   const [width, setWidth] = useState(null)
   const confettiRef = useRef(null);
@@ -29,6 +30,7 @@ function App() {
     setShowMovie(null);
     setShowCrazy(null);
     setHpQuote(null);
+    setShowBook(null);
   }
 
   const fetchCrazy = async () => {
@@ -36,6 +38,7 @@ function App() {
     setShowCrazy(null);
     setHpQuote(null);
     setShowMovie(null);
+    setShowBook(null);
     {Math.random() > .5 ?
     fetchYe()
     :
@@ -44,9 +47,12 @@ function App() {
   }
 
   const fetchHP = async () => {
-    setLotrQuote(null)
-    setYeQuote(null)
-    setTrumpQuote(null)
+    setLotrQuote(null);
+    setYeQuote(null);
+    setShowCrazy(null);
+    setTrumpQuote(null);
+    setShowMovie(null);
+    setShowBook(null);
     setHpQuote(json[Math.floor(Math.random() * 38)])
     // await fetch("https://www.stands4.com/services/v2/quotes.php")
     //   .then((response) => response.json())
@@ -83,7 +89,7 @@ function App() {
       <Dashboard fetchCrazy={fetchCrazy} fetchLotr={fetchLotr} fetchHP={fetchHP} />
       <LotrQuote lotrQuote={lotrQuote} showMovie={showMovie} setShowMovie={setShowMovie}/>
       <CrazyQuote yeQuote={yeQuote} trumpQuote={trumpQuote} showCrazy={showCrazy} setShowCrazy={setShowCrazy}/>
-      <HP hpQuote={hpQuote} />
+      <HP hpQuote={hpQuote} showBook={showBook} setShowBook={setShowBook} />
 
       {showMovie !== null && showMovie !== 'loser' &&
           <Confetti width={width} height={height} />
