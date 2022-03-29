@@ -1,8 +1,10 @@
 import './App.css';
+import json from './HP.json'
 import { useState } from 'react';
 import CrazyQuote from './CrazyQuote';
 import LotrQuote from './LotrQuote';
 import Dashboard from './Dashboard';
+import HP from './HPQuote';
 import Header from './Header';
 
 function App() {
@@ -13,6 +15,7 @@ function App() {
   const rndmLotrQuote = require('random-lotr-movie-quote');
   const [lotrQuote, setLotrQuote] = useState(null);
   const [showMovie, setShowMovie] = useState(null);
+  const [hpQuote, setHpQuote] = useState(null);
   
   const fetchLotr = () => {
     setLotrQuote([rndmLotrQuote()]);
@@ -20,16 +23,29 @@ function App() {
     setTrumpQuote(null);
     setShowMovie(null);
     setShowCrazy(null);
+    setHpQuote(null);
   }
 
   const fetchCrazy = async () => {
-    setLotrQuote(null)
+    setLotrQuote(null);
     setShowCrazy(null);
+    setHpQuote(null);
     {Math.random() > .5 ?
     fetchYe()
     :
     fetchTrump()
     }
+  }
+
+  const fetchHP = async () => {
+    setLotrQuote(null)
+    setYeQuote(null)
+    setTrumpQuote(null)
+    setHpQuote(json[Math.floor(Math.random() * 38)])
+    // await fetch("https://www.stands4.com/services/v2/quotes.php")
+    //   .then((response) => response.json())
+    //   .then((data) => console.log([data]))
+    //   .catch(() => console.log('error'))
   }
 
   const fetchYe = async () => {
@@ -53,9 +69,10 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Dashboard fetchCrazy={fetchCrazy} fetchLotr={fetchLotr} />
+      <Dashboard fetchCrazy={fetchCrazy} fetchLotr={fetchLotr} fetchHP={fetchHP} />
       <LotrQuote lotrQuote={lotrQuote} showMovie={showMovie} setShowMovie={setShowMovie}/>
       <CrazyQuote yeQuote={yeQuote} trumpQuote={trumpQuote} showCrazy={showCrazy} setShowCrazy={setShowCrazy}/>
+      <HP hpQuote={hpQuote} />
     </div>
   );
 }

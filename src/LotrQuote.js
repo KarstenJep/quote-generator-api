@@ -61,7 +61,7 @@ export default function LotrQuote({ lotrQuote, showMovie, setShowMovie }) {
                 <>
                     <div className='lotrQuote'>
                         <p>"{quote.dialog}"</p>
-                        <p>- {quote.char}</p>
+                        <p>— {quote.char}</p>
                     </div>
                     {showMovie === null &&
                         <>

@@ -18,6 +18,7 @@ import ivanka from './audio/ivanka.mp3';
 import wrong from './audio/Wrong3.mp3';
 import fakenews from './audio/fakenews.mp3';
 import { useState } from 'react';
+import { filter } from 'random-lotr-movie-quote/quotes';
 
 export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCrazy }) {
 
@@ -105,16 +106,16 @@ export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
                     }
                     {showCrazy === 'winner' &&
                         <>
-                            <h4>- KanYe</h4>
+                            <h4>— KanYe</h4>
                             <Check size="large" style={{ color: green[500], fontSize: 70 }} />
-                            <img src={yeW} style={{height: '15vmin', boxShadow: '0px 0px 8px rgba(220, 0, 0, 0.8)' }} alt="ye" />
+                            <img src={yeW} style={{height: '15vmin' }} alt="ye" />
                         </>
                     }
                     {showCrazy === 'loser' &&
                         <>
-                            <h4>- KanYe</h4>
+                            <h4>— KanYe</h4>
                             <Ex size="large" style={{ color: red[500], fontSize: 70 }} />
-                            <img src={ye} style={{height: '15vmin', boxShadow: '0px 0px 8px rgba(220, 0, 0, 0.8)' }} alt="ye" />
+                            <img src={ye} style={{height: '15vmin' }} alt="ye" />
                         </>
                     }
                     </Box>
@@ -138,14 +139,14 @@ export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
                     }
                     {showCrazy === 'winner' &&
                         <>
-                            <h4>- Donald Trump</h4>                            
+                            <h4>— Donald Trump</h4>                            
                             <Check size="large" style={{ color: green[500], fontSize: 70 }} />
                             <img src={trumpW} style={{height: '15vmin' }} alt="trump" />  
                         </>
                     }
                     {showCrazy === 'loser' &&
                         <>
-                            <h4>- Donald Trump</h4>
+                            <h4>— Donald Trump</h4>
                             <Ex size="large" style={{ color: red[500], fontSize: 70 }} />
                             <img src={trumpL} style={{height: '15vmin' }} alt="trump" />  
                         </>
