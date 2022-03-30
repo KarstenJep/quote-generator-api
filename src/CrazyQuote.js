@@ -1,15 +1,16 @@
+import { useState } from 'react';
+import { emojisplosion } from "emojisplosion";
+// M-UI
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import Check from '@material-ui/icons/CheckCircle';
-import Ex from '@material-ui/icons/HighlightOff';
-import { green, red } from '@material-ui/core/colors';
-import { emojisplosion } from "emojisplosion";
 import Box from '@mui/material/Box';
+// Images
 import trumpL from './Images/trumpL.png';
 import trumpW from './Images/trumpW.png';
 import ye from './Images/ye.png';
 import yeW from './Images/yeW.png';
-import yeW1 from './audio/Thank you.mp3'
+// Audio
+import yeW1 from './audio/Good.mp3'
 import yeW2 from './audio/Nominated.mp3'
 import yeL1 from './audio/No.mp3';
 import yeL2 from './audio/robot.mp3';
@@ -17,8 +18,6 @@ import special from './audio/youreVerySpecial.mp3';
 import ivanka from './audio/ivanka.mp3';
 import wrong from './audio/Wrong3.mp3';
 import fakenews from './audio/fakenews.mp3';
-import { useState } from 'react';
-import { filter } from 'random-lotr-movie-quote/quotes';
 
 export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCrazy }) {
 
@@ -30,56 +29,62 @@ export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
     const tW2 = new Audio(ivanka);
     const tL1 = new Audio(fakenews);
     const tL2 = new Audio(wrong);
-    const [toggleYeLoser, setToggleYeLoser] = useState(false);
-    const [toggleYeWinner, setToggleYeWinner] = useState(false);
-    const [toggleTrLoser, setToggleYTrLoser] = useState(false);
-    const [toggleTrWinner, setToggleTrWinner] = useState(false);
+    const [toggleLoser, setToggleLoser] = useState(false);
+    const [toggleWinner, setToggleWinner] = useState(false);
 
     const crazyAnswer = (answer) => {
         if (answer === 'yeW') {
             setShowCrazy('winner');
-            setToggleYeWinner(!toggleYeWinner);
+            setToggleWinner(!toggleWinner);
             emojisplosion({
-                emojiCount: 201,
-                emojis: ["💩", "📿", "🧻", "💣", "🎆", "🎉"],
+                emojiCount: 151,
+                emojis: ["💩", "📿", "🧻", "💣"],
             });
             emojisplosion({
-                emojiCount: 201,
-                emojis: ["🎤", "🎧", "🧣", "👟", "🕶", "💥"],
+                emojiCount: 151,
+                emojis: ["🎤", "🎧", "🧣", "👟"],
             });
-            {toggleYeWinner ?
+            emojisplosion({
+                emojiCount: 151,
+                emojis: [ "🕶", "💥", "🎆", "🎉"],
+            });
+            {toggleWinner ?
                 yW1.play()
                 :
                 yW2.play()
             }
         } else if (answer === 'trumpW') {
             setShowCrazy('winner');
-            setToggleTrWinner(!toggleTrWinner);
+            setToggleWinner(!toggleWinner);
             emojisplosion({
-                emojiCount: 201,
-                emojis: ["💩", "🚽", "🧻", "💣", "🎆", "🎉"],
+                emojiCount: 151,
+                emojis: ["💩", "🚽", "🧻", "💣"],
             });
             emojisplosion({
-                emojiCount: 201,
-                emojis: ["🏌", "🐷", "🐖", "💥", "🍊", "🤡"],
+                emojiCount: 151,
+                emojis: ["🏌", "🐷", "🐖", "💥"],
             });
-            {toggleTrWinner ?
+            emojisplosion({
+                emojiCount: 151,
+                emojis: ["🍊", "🤡", "🎆", "🎉"],
+            });
+            {toggleWinner ?
                 tW1.play()
                 :
                 tW2.play()
             }
         } else if (answer === 'yeL') {
             setShowCrazy('loser');
-            setToggleYeLoser(!toggleYeLoser);
-            {toggleYeLoser ? 
+            setToggleLoser(!toggleLoser);
+            {toggleLoser ? 
                 yl1.play()
                 :
                 yl2.play()
             }
         } else if (answer === 'trumpL') {
             setShowCrazy('loser');
-            setToggleYTrLoser(!toggleTrLoser);
-            {toggleTrLoser ? 
+            setToggleLoser(!toggleLoser);
+            {toggleLoser ? 
                 tL1.play()
                 :
                 tL2.play()
@@ -93,31 +98,27 @@ export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
                 <div className='quote'>
                     <div className='yeQuote'>
                         <p>"{quote.quote}"</p>
+                        <p style={{marginTop: '-2%'}}>{showCrazy ? '— KanYe' : '— ??' }</p>
                     </div>
                     <Box mr={110}>
-                    {showCrazy === null &&
-                        <>
+                        {showCrazy === null &&
+                            <>
                             <h4>Which crazy said this?</h4>
                             <Stack direction="row" spacing={3} justifyContent="center">
-                                <Button style={{ borderRadius: 45, boxShadow: '0px 0px 8px rgba(220, 0, 0, 0.8)' }} variant="outlined" size="large" color="error" onClick={() => crazyAnswer('yeW')}>KanYe</Button>
-                                <Button style={{ borderRadius: 45, boxShadow: '0px 0px 8px rgba(220, 0, 0, 0.8)' }} variant="outlined" size="large" color="error" onClick={() => crazyAnswer('yeL')}>Donald Trump</Button>
+                                <Button style={{ borderRadius: 45, boxShadow: '0px 0px 8px rgba(0, 169, 0, 0.8)' }} variant="outlined" size="large" color="success" onClick={() => crazyAnswer('yeW')}>KanYe</Button>
+                                <Button style={{ borderRadius: 45, boxShadow: '0px 0px 8px rgba(0,169, 0, 0.8)' }} variant="outlined" size="large" color="success" onClick={() => crazyAnswer('yeL')}>Donald Trump</Button>
                             </Stack>
-                        </>
-                    }
-                    {showCrazy === 'winner' &&
-                        <>
-                            <h4>— KanYe</h4>
-                            <Check size="large" style={{ color: green[500], fontSize: 70 }} />
-                            <img src={yeW} style={{height: '15vmin' }} alt="ye" />
-                        </>
-                    }
-                    {showCrazy === 'loser' &&
-                        <>
-                            <h4>— KanYe</h4>
-                            <Ex size="large" style={{ color: red[500], fontSize: 70 }} />
-                            <img src={ye} style={{height: '15vmin' }} alt="ye" />
-                        </>
-                    }
+                            </>
+                        }
+                        {showCrazy !== null &&
+                            <h4>KanYe</h4>
+                        }
+                        {showCrazy === 'winner' &&
+                            <img src={yeW} style={{height: '18vmin', filter:'drop-shadow(0px 0px 18px rgba(0, 169, 0, 1))'  }} alt="ye" />
+                        }
+                        {showCrazy === 'loser' &&
+                            <img src={ye} style={{height: '18vmin', filter:'drop-shadow(0px 0px 18px rgba(220, 0, 0, 1))' }} alt="ye" />
+                        }
                     </Box>
                 </div>
             )}
@@ -126,31 +127,27 @@ export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
                 <div className='quote'>
                     <div className='yeQuote'>
                         <p>"{quote}"</p>
+                        <p style={{marginTop: '-2%'}}>{showCrazy ? '— Donald Trump' : '— ??' }</p>
                     </div>
                     <Box mr={110} >
-                    {showCrazy === null &&
-                        <>
+                        {showCrazy === null &&
+                            <>
                             <h4>Which crazy has this quote?</h4>
                             <Stack direction="row" spacing={3} justifyContent="center">
-                                <Button style={{ borderRadius: 45, boxShadow: '0px 0px 8px rgba(220, 0, 0, 0.8)' }} variant="outlined" size="large" color="error" onClick={() => crazyAnswer('trumpL')}>KanYe</Button>
-                                <Button style={{ borderRadius: 45, boxShadow: '0px 0px 8px rgba(220, 0, 0, 0.8)' }} variant="outlined" size="large" color="error" onClick={() => crazyAnswer('trumpW')}>Donald Trump</Button>
+                                <Button style={{ borderRadius: 45, boxShadow: '0px 0px 8px rgba(0, 169, 0, 0.8)' }} variant="outlined" size="large" color="success" onClick={() => crazyAnswer('trumpL')}>KanYe</Button>
+                                <Button style={{ borderRadius: 45, boxShadow: '0px 0px 8px rgba(0, 169, 0, 0.8)' }} variant="outlined" size="large" color="success" onClick={() => crazyAnswer('trumpW')}>Donald Trump</Button>
                             </Stack>
-                        </>
-                    }
-                    {showCrazy === 'winner' &&
-                        <>
-                            <h4>— Donald Trump</h4>                            
-                            <Check size="large" style={{ color: green[500], fontSize: 70 }} />
-                            <img src={trumpW} style={{height: '15vmin' }} alt="trump" />  
-                        </>
-                    }
-                    {showCrazy === 'loser' &&
-                        <>
-                            <h4>— Donald Trump</h4>
-                            <Ex size="large" style={{ color: red[500], fontSize: 70 }} />
-                            <img src={trumpL} style={{height: '15vmin' }} alt="trump" />  
-                        </>
-                    }
+                            </>
+                        }
+                        {showCrazy !== null &&
+                            <h4>Donald Trump</h4>
+                        }
+                        {showCrazy === 'winner' &&                      
+                                <img src={trumpW} style={{height: '18vmin', filter:'drop-shadow(0px 0px 18px rgba(0, 169, 0, 1))' }} alt="trump" />  
+                        }
+                        {showCrazy === 'loser' &&
+                                <img src={trumpL} style={{height: '18vmin', filter:'drop-shadow(0px 0px 18px rgba(220, 0, 0, 1))' }} alt="trump" />  
+                        }
                     </Box>
                 </div>
             )}

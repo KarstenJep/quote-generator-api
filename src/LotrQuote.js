@@ -94,11 +94,11 @@ export default function LotrQuote({ lotrQuote, showMovie, setShowMovie }) {
                     }
                     {showMovie === 'loser' &&
                         <>
-                            <img src={gollum} style={{ height: '14vmin', borderRadius: '15px', border: '2px red solid', boxShadow: '0px 0px 8px rgba(251, 0, 0, 0.8)' }} alt="fotr" />
-                            {' '}&nbsp;
-                            <img src={orc} style={{ height: '14vmin', borderRadius: '15px', border: '2px red solid', boxShadow: '0px 0px 8px rgba(251, 0, 0, 0.8)' }} alt="fotr" />
-                            <br />
-                            <Ex size="large" style={{ color: red[500], fontSize: 70 }} />
+                        { toggleLoser ?
+                                <img src={orc} style={{ height: '18vmin', borderRadius: '15px', border: '2px red solid', boxShadow: '0px 0px 16px rgba(251, 0, 0, 0.8)' }} alt="fotr" />
+                                :
+                                <img src={gollum} style={{ height: '18vmin', borderRadius: '15px', border: '2px red solid', boxShadow: '0px 0px 16px rgba(251, 0, 0, 0.8)' }} alt="fotr" />
+                        }    
                         </>
                     }
                     {showMovie === 'The Fellowship of the Ring ' &&
