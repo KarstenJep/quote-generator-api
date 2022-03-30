@@ -13,14 +13,35 @@ import OP from './Images/OP.jpg';
 import HBP from './Images/HBP.jpg';
 import DH from './Images/DH.jpg';
 import HWMNBN from './Images/HWMNBN.jpg';
-
+// Audio
+import wizard from './audio/wizard.mp3';
+import Scary from './audio/Scary.mp3';
+import Priorities from './audio/Priorities.mp3';
+import future from './audio/future.mp3';
+import Expecto from './audio/Expecto.mp3';
+import fool from './audio/fool.mp3';
+import tonight from './audio/tonight.mp3';
+import destroy from './audio/destroy.mp3';
+import Speak from './audio/Speak only.mp3';
 
 export default function HP({ hpQuote, showBook, setShowBook }){
 
+    const w1 = new Audio(wizard);
+    const w2 = new Audio(Scary);
+    const w3 = new Audio(Priorities);
+    const w4 = new Audio(future);
+    const w5 = new Audio(Expecto);
+    const l1 = new Audio(fool);
+    const l2 = new Audio(tonight);
+    const l3 = new Audio(destroy);
+    const l4 = new Audio(Speak);
+    const [rotateLoser, setRotateLoser] = useState(0);
+    const [rotateWinner, setRotateWinner] = useState(0);
 
     const bookAnswer = (answer) => {
         if(answer === hpQuote.book){
             setShowBook(answer);
+            handleRotateWinner();
             emojisplosion({
                 emojiCount: 151,
                 emojis: ["🧙‍♂️", "🍺", "🍷", "✨"],
@@ -35,6 +56,48 @@ export default function HP({ hpQuote, showBook, setShowBook }){
             }); 
         } else {
             setShowBook('Loser');
+            handleRotateLoser();
+        }
+    }
+
+    const handleRotateWinner = () => {
+        setRotateWinner(rotateWinner + 1);
+        switch (rotateWinner) {
+            case 0:
+                w1.play();
+                break;
+            case 1:
+                w2.play();
+                break;
+            case 2:
+                w3.play();
+                break;
+            case 3:
+                w4.play();
+                break;
+            case 4:
+                w5.play();
+                setRotateWinner(0);
+                break;
+        }
+    }
+
+    const handleRotateLoser = () => {
+        setRotateLoser(rotateLoser + 1)
+        switch (rotateLoser) {
+            case 0:
+                l1.play();
+                break;
+            case 1:
+                l2.play();
+                break;
+            case 2:
+                l3.play();
+                break;
+            case 3:
+                l4.play();
+                setRotateLoser(0);
+                break;
         }
     }
 
