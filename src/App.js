@@ -19,6 +19,9 @@ function App() {
   const [showMovie, setShowMovie] = useState(null);
   const [hpQuote, setHpQuote] = useState(null);
   const [showBook, setShowBook] = useState(null);
+  const [streak, setStreak] = useState(0);
+  const [wins, setWins] = useState(0);
+  const [total, setTotal] = useState(0);
   const [showStreak, setShowStreak] = useState(null);
   const [height, setHeight] = useState(null)
   const [width, setWidth] = useState(null)
@@ -88,9 +91,9 @@ function App() {
     <div className="App" ref={confettiRef}>
       <Header />
       <Dashboard fetchCrazy={fetchCrazy} fetchLotr={fetchLotr} fetchHP={fetchHP} />
-      <LotrQuote lotrQuote={lotrQuote} showMovie={showMovie} setShowMovie={setShowMovie} showStreak={showStreak} setShowStreak={setShowStreak}/>
-      <CrazyQuote yeQuote={yeQuote} trumpQuote={trumpQuote} showCrazy={showCrazy} setShowCrazy={setShowCrazy} showStreak={showStreak} setShowStreak={setShowStreak}/>
-      <HP hpQuote={hpQuote} showBook={showBook} setShowBook={setShowBook} showStreak={showStreak} setShowStreak={setShowStreak}/>
+      <LotrQuote lotrQuote={lotrQuote} showMovie={showMovie} setShowMovie={setShowMovie} showStreak={showStreak} setShowStreak={setShowStreak} streak={streak} setStreak={setStreak} wins={wins} setWins={setWins} total={total} setTotal={setTotal}/>
+      <CrazyQuote yeQuote={yeQuote} trumpQuote={trumpQuote} showCrazy={showCrazy} setShowCrazy={setShowCrazy} showStreak={showStreak} setShowStreak={setShowStreak} streak={streak} setStreak={setStreak} wins={wins} setWins={setWins} total={total} setTotal={setTotal}/>
+      <HP hpQuote={hpQuote} showBook={showBook} setShowBook={setShowBook} showStreak={showStreak} setShowStreak={setShowStreak} streak={streak} setStreak={setStreak} wins={wins} setWins={setWins} total={total} setTotal={setTotal}/>
       
       {showMovie !== null && showMovie !== 'loser' &&
           <Confetti width={width} height={height} />

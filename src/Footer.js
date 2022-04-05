@@ -1,8 +1,8 @@
 import { useState } from "react"
 
-export default function Footer({showStreak}) {
+export default function Footer({showStreak, streak, wins, total}) {
 
-console.log(showStreak);
+console.log(streak);
     const getColor = () => {
         if(showStreak === 'loser'){
             return 'rgb(251 0 0 / 85%)';
@@ -29,9 +29,10 @@ console.log(showStreak);
 
     return (
         <>
-            <div style={{marginTop: '-20vh', color: 'white'}}>
+            <div style={{marginTop: '-22vh', color: 'white'}}>
                 <h5>Select another quote!</h5>
-                <h5 style={{ marginTop: '-4vh', color: getColor(), textShadow: getShadow() }}>Streak: 1</h5>
+                <h5 style={{ marginTop: '-4vh', color: getColor(), textShadow: getShadow() }}>Streak: {streak}</h5>
+                <h5 style={{ marginTop: '-4vh', color: getColor(), textShadow: getShadow() }}>Total: {wins} / {total}</h5>
             </div>
         </>
     )

@@ -20,7 +20,7 @@ import distances from './audio/distances.mp3';
 import task from './audio/task.mp3';
 import late from './audio/late.mp3';
 
-export default function LotrQuote({ lotrQuote, showMovie, setShowMovie, showStreak, setShowStreak }) {
+export default function LotrQuote({ lotrQuote, showMovie, setShowMovie, showStreak, setShowStreak, streak, setStreak, wins, setWins, total, setTotal }) {
 
     const fotk1 = new Audio(task);
     const fotk2 = new Audio(late);
@@ -36,9 +36,12 @@ export default function LotrQuote({ lotrQuote, showMovie, setShowMovie, showStre
     const [toggleROTK, setToggleROTK] = useState(false);
 
     const movieAnswer = (answer) => {
+        setTotal(total + 1);
         if (answer == lotrQuote[0].movie) {
             setShowMovie(answer);
             setShowStreak('lotr');
+            setStreak(streak + 1);
+            setWins(wins + 1);
             if(answer === 'The Fellowship of the Ring '){
                 setToggleFOTR(!toggleFOTR);
                 {toggleFOTR ? 
@@ -64,6 +67,7 @@ export default function LotrQuote({ lotrQuote, showMovie, setShowMovie, showStre
         } else {
             setShowMovie('loser');
             setShowStreak('loser');
+            setStreak(0);
             setToggleLoser(!toggleLoser);
             {toggleLoser ? 
                 loser1.play()
@@ -118,7 +122,7 @@ export default function LotrQuote({ lotrQuote, showMovie, setShowMovie, showStre
             )}
             {showMovie !== null &&
                 <Box mr={102}>
-                    <Footer showStreak={showStreak} setShowStreak={setShowStreak} />
+                    <Footer showStreak={showStreak} setShowStreak={setShowStreak} streak={streak} wins={wins} total={total}/>
                 </Box>
             }
         </div>

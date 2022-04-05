@@ -20,7 +20,7 @@ import ivanka from './audio/ivanka.mp3';
 import wrong from './audio/Wrong3.mp3';
 import fakenews from './audio/fakenews.mp3';
 
-export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCrazy, showStreak, setShowStreak }) {
+export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCrazy, showStreak, setShowStreak, streak, setStreak, wins, setWins, total, setTotal }) {
 
     const yW1 = new Audio(yeW1);
     const yW2 = new Audio(yeW2);
@@ -34,9 +34,12 @@ export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
     const [toggleWinner, setToggleWinner] = useState(false);
 
     const crazyAnswer = (answer) => {
+        setTotal(total + 1);
         if (answer === 'yeW') {
             setShowCrazy('winner');
             setShowStreak('crazy');
+            setStreak(streak + 1);
+            setWins(wins + 1);
             setToggleWinner(!toggleWinner);
             emojisplosion({
                 emojiCount: 151,
@@ -57,7 +60,10 @@ export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
             }
         } else if (answer === 'trumpW') {
             setShowCrazy('winner');
-            setShowStreak('crazy');            setToggleWinner(!toggleWinner);
+            setShowStreak('crazy');
+            setStreak(streak + 1); 
+            setWins(wins + 1);           
+            setToggleWinner(!toggleWinner);
             emojisplosion({
                 emojiCount: 151,
                 emojis: ["💩", "🚽", "🧻", "💣"],
@@ -78,6 +84,7 @@ export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
         } else if (answer === 'yeL') {
             setShowCrazy('loser');
             setShowStreak('loser');
+            setStreak(0);
             setToggleLoser(!toggleLoser);
             {toggleLoser ? 
                 yl1.play()
@@ -87,6 +94,7 @@ export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
         } else if (answer === 'trumpL') {
             setShowCrazy('loser');
             setShowStreak('loser');
+            setStreak(0);
             setToggleLoser(!toggleLoser);
             {toggleLoser ? 
                 tL1.play()
@@ -156,7 +164,7 @@ export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
                 </>
             )}
             {showCrazy !== null &&
-                <Footer showStreak={showStreak} setShowStreak={setShowStreak} />
+                <Footer showStreak={showStreak} setShowStreak={setShowStreak} streak={streak} wins={wins} total={total}/>
             }
         </div>
     )

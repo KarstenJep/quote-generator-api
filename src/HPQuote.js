@@ -25,7 +25,7 @@ import tonight from './audio/tonight.mp3';
 import destroy from './audio/destroy.mp3';
 import Speak from './audio/Speak only.mp3';
 
-export default function HP({ hpQuote, showBook, setShowBook, showStreak, setShowStreak }){
+export default function HP({ hpQuote, showBook, setShowBook, showStreak, setShowStreak, streak, setStreak, wins, setWins, total, setTotal }){
 
     const w1 = new Audio(wizard);
     const w2 = new Audio(Scary);
@@ -40,9 +40,12 @@ export default function HP({ hpQuote, showBook, setShowBook, showStreak, setShow
     const [rotateWinner, setRotateWinner] = useState(0);
 
     const bookAnswer = (answer) => {
+        setTotal(total + 1);
         if(answer === hpQuote.book){
             setShowBook(answer);
-            setShowStreak('hp')
+            setShowStreak('hp');
+            setStreak(streak + 1);
+            setWins(wins + 1);
             handleRotateWinner();
             emojisplosion({
                 emojiCount: 151,
@@ -60,6 +63,7 @@ export default function HP({ hpQuote, showBook, setShowBook, showStreak, setShow
             setShowBook('Loser');
             setShowStreak('loser');
             handleRotateLoser();
+            setStreak(0);
         }
     }
 
@@ -159,7 +163,9 @@ export default function HP({ hpQuote, showBook, setShowBook, showStreak, setShow
                     }
                 </Box>
                 {showBook !== null &&
-                    <Footer showStreak={showStreak} setShowStreak={setShowStreak} />
+                    <Box mt={-2}>
+                    <Footer showStreak={showStreak} setShowStreak={setShowStreak} streak={streak} wins={wins} total={total}/>
+                    </Box>
                 }
             </>
             }
