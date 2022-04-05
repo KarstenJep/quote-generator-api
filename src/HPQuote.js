@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { emojisplosion } from "emojisplosion";
+import Footer from './Footer';
 // M-UI
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
@@ -24,7 +25,7 @@ import tonight from './audio/tonight.mp3';
 import destroy from './audio/destroy.mp3';
 import Speak from './audio/Speak only.mp3';
 
-export default function HP({ hpQuote, showBook, setShowBook }){
+export default function HP({ hpQuote, showBook, setShowBook, showStreak, setShowStreak }){
 
     const w1 = new Audio(wizard);
     const w2 = new Audio(Scary);
@@ -41,6 +42,7 @@ export default function HP({ hpQuote, showBook, setShowBook }){
     const bookAnswer = (answer) => {
         if(answer === hpQuote.book){
             setShowBook(answer);
+            setShowStreak('hp')
             handleRotateWinner();
             emojisplosion({
                 emojiCount: 151,
@@ -56,6 +58,7 @@ export default function HP({ hpQuote, showBook, setShowBook }){
             }); 
         } else {
             setShowBook('Loser');
+            setShowStreak('loser');
             handleRotateLoser();
         }
     }
@@ -113,7 +116,7 @@ export default function HP({ hpQuote, showBook, setShowBook }){
                 { showBook === null &&
                     <>
                         <Box ml={115}>
-                            <h4>Which book has this quote?</h4>
+                            <h4 className='QA'>Which book has this quote?</h4>
                         </Box>
                         <Stack direction="row" spacing={3} justifyContent="center">
                             <Button style={{ borderRadius: 3, boxShadow: '0px 0px 8px rgba(0, 136, 255, 0.8)' }} variant="outlined" size="large" color="info" onClick={() => bookAnswer("The Sorcerer's Stone")}>The Sorcerer's Stone</Button>
@@ -126,7 +129,7 @@ export default function HP({ hpQuote, showBook, setShowBook }){
                         </Stack>
                     </>
                 }
-                <Box ml={112}>
+                <Box ml={110}>
                     { showBook !== null &&
                         <h4>{hpQuote.book}</h4>
                     }
@@ -155,6 +158,9 @@ export default function HP({ hpQuote, showBook, setShowBook }){
                         <img src={DH} className="book" alt="DH" />
                     }
                 </Box>
+                {showBook !== null &&
+                    <Footer showStreak={showStreak} setShowStreak={setShowStreak} />
+                }
             </>
             }
         </div>

@@ -1,9 +1,9 @@
 import {useState, useEffect} from 'react';
+import Footer from './Footer.js'
 // M-UI
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import Ex from '@material-ui/icons/HighlightOff';
-import { green, red } from '@material-ui/core/colors';
+import Box from '@mui/material/Box';
 // Images
 import FOTR from './Images/FOTR.jpg';
 import TTT from './Images/TTT.jpg';
@@ -20,7 +20,7 @@ import distances from './audio/distances.mp3';
 import task from './audio/task.mp3';
 import late from './audio/late.mp3';
 
-export default function LotrQuote({ lotrQuote, showMovie, setShowMovie }) {
+export default function LotrQuote({ lotrQuote, showMovie, setShowMovie, showStreak, setShowStreak }) {
 
     const fotk1 = new Audio(task);
     const fotk2 = new Audio(late);
@@ -38,6 +38,7 @@ export default function LotrQuote({ lotrQuote, showMovie, setShowMovie }) {
     const movieAnswer = (answer) => {
         if (answer == lotrQuote[0].movie) {
             setShowMovie(answer);
+            setShowStreak('lotr');
             if(answer === 'The Fellowship of the Ring '){
                 setToggleFOTR(!toggleFOTR);
                 {toggleFOTR ? 
@@ -62,6 +63,7 @@ export default function LotrQuote({ lotrQuote, showMovie, setShowMovie }) {
             }
         } else {
             setShowMovie('loser');
+            setShowStreak('loser');
             setToggleLoser(!toggleLoser);
             {toggleLoser ? 
                 loser1.play()
@@ -79,9 +81,10 @@ export default function LotrQuote({ lotrQuote, showMovie, setShowMovie }) {
                         <p>"{quote.dialog}"</p>
                         <p>— {quote.char}</p>
                     </div>
+                    <Box ml={4}>
                     {showMovie === null &&
                         <>
-                            <h4>Which film has this quote?</h4>
+                            <h4 className='QA'>Which film has this quote?</h4>
                             <Stack direction="row" spacing={3} justifyContent="center">
                                 <Button style={{ borderRadius: 15, boxShadow: '0px 0px 8px rgba(255, 71, 0, 0.8)' }} variant="outlined" size="large" color="warning" onClick={() => movieAnswer('The Fellowship of the Ring ')}>Fellowship of the Ring</Button>
                                 <Button style={{ borderRadius: 15, boxShadow: '0px 0px 8px rgba(255, 71, 0, 0.8)' }} variant="outlined" size="large" color="warning" onClick={() => movieAnswer('The Two Towers ')}>The Two Towers</Button>
@@ -90,7 +93,7 @@ export default function LotrQuote({ lotrQuote, showMovie, setShowMovie }) {
                         </>
                     }
                     {showMovie !== null &&
-                        <h4>{quote.movie}</h4>
+                        <h4 style={{ marginTop: '3vh', marginBottom: '3vh' }}>{quote.movie}</h4>
                     }
                     {showMovie === 'loser' &&
                         <>
@@ -110,8 +113,14 @@ export default function LotrQuote({ lotrQuote, showMovie, setShowMovie }) {
                     {showMovie === 'The Return of the King ' &&
                         <img src={ROTK} className="movie" alt="rotk" />
                     }
+                    </Box>
                 </>
             )}
+            {showMovie !== null &&
+                <Box mr={102}>
+                    <Footer showStreak={showStreak} setShowStreak={setShowStreak} />
+                </Box>
+            }
         </div>
     )
 }

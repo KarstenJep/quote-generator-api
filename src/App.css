@@ -21,7 +21,7 @@ body {
 }
 
 .App-logo {
-  height: 15vmin;
+  height: 14vmin;
   pointer-events: none;
 }
 
@@ -36,23 +36,19 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(8px + 2vmin);
+  font-size: calc(7px + 2vmin);
   color: white;
-  text-shadow: 0 0 80px rgb(192 219 255 / 75%), 0 0 32px rgb(65 120 255 / 24%);
-}
-
-.hover:hover {
-  box-shadow: rgba(var(--primary-color), 0.5) 0px 0px 20px 0px;
+  text-shadow: 0 0 80px rgb(192 219 255 / 85%), 0 0 32px rgb(65 120 255 / 44%);
 }
 
 .container {
-  padding-bottom: 2.5%;
+  padding-bottom: 2%;
 }
 
 .quote {
   font-size: calc(10px + 2vmin);
   color: white;
-  text-shadow: 0 0 80px rgb(192 219 255 / 85%), 0 0 32px rgb(65 120 255 / 24%);
+  text-shadow: 0 0 80px rgb(192 219 255 / 85%), 0 0 32px rgb(65 120 255 / 44%);
 }
 
 .yeQuote {
@@ -99,6 +95,10 @@ body {
   border-radius: 5px;
   border: solid 2px  rgb(0, 136, 255);
   box-shadow: 0px 0px 20px rgba(0, 136, 255, 0.843);
+}
+
+.QA {
+  margin: 3vh 0;
 }
 
 @keyframes App-logo-spin {

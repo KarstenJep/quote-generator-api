@@ -19,6 +19,7 @@ function App() {
   const [showMovie, setShowMovie] = useState(null);
   const [hpQuote, setHpQuote] = useState(null);
   const [showBook, setShowBook] = useState(null);
+  const [showStreak, setShowStreak] = useState(null);
   const [height, setHeight] = useState(null)
   const [width, setWidth] = useState(null)
   const confettiRef = useRef(null);
@@ -87,10 +88,10 @@ function App() {
     <div className="App" ref={confettiRef}>
       <Header />
       <Dashboard fetchCrazy={fetchCrazy} fetchLotr={fetchLotr} fetchHP={fetchHP} />
-      <LotrQuote lotrQuote={lotrQuote} showMovie={showMovie} setShowMovie={setShowMovie}/>
-      <CrazyQuote yeQuote={yeQuote} trumpQuote={trumpQuote} showCrazy={showCrazy} setShowCrazy={setShowCrazy}/>
-      <HP hpQuote={hpQuote} showBook={showBook} setShowBook={setShowBook} />
-
+      <LotrQuote lotrQuote={lotrQuote} showMovie={showMovie} setShowMovie={setShowMovie} showStreak={showStreak} setShowStreak={setShowStreak}/>
+      <CrazyQuote yeQuote={yeQuote} trumpQuote={trumpQuote} showCrazy={showCrazy} setShowCrazy={setShowCrazy} showStreak={showStreak} setShowStreak={setShowStreak}/>
+      <HP hpQuote={hpQuote} showBook={showBook} setShowBook={setShowBook} showStreak={showStreak} setShowStreak={setShowStreak}/>
+      
       {showMovie !== null && showMovie !== 'loser' &&
           <Confetti width={width} height={height} />
       }

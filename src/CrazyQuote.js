@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { emojisplosion } from "emojisplosion";
+import Footer from './Footer';
 // M-UI
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
@@ -19,7 +20,7 @@ import ivanka from './audio/ivanka.mp3';
 import wrong from './audio/Wrong3.mp3';
 import fakenews from './audio/fakenews.mp3';
 
-export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCrazy }) {
+export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCrazy, showStreak, setShowStreak }) {
 
     const yW1 = new Audio(yeW1);
     const yW2 = new Audio(yeW2);
@@ -35,6 +36,7 @@ export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
     const crazyAnswer = (answer) => {
         if (answer === 'yeW') {
             setShowCrazy('winner');
+            setShowStreak('crazy');
             setToggleWinner(!toggleWinner);
             emojisplosion({
                 emojiCount: 151,
@@ -55,7 +57,7 @@ export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
             }
         } else if (answer === 'trumpW') {
             setShowCrazy('winner');
-            setToggleWinner(!toggleWinner);
+            setShowStreak('crazy');            setToggleWinner(!toggleWinner);
             emojisplosion({
                 emojiCount: 151,
                 emojis: ["💩", "🚽", "🧻", "💣"],
@@ -75,6 +77,7 @@ export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
             }
         } else if (answer === 'yeL') {
             setShowCrazy('loser');
+            setShowStreak('loser');
             setToggleLoser(!toggleLoser);
             {toggleLoser ? 
                 yl1.play()
@@ -83,6 +86,7 @@ export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
             }
         } else if (answer === 'trumpL') {
             setShowCrazy('loser');
+            setShowStreak('loser');
             setToggleLoser(!toggleLoser);
             {toggleLoser ? 
                 tL1.play()
@@ -93,17 +97,17 @@ export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
     }
 
     return (
-        <div >
+        <div className='quote'>
             {yeQuote?.map(quote =>
-                <div className='quote'>
+                <>
                     <div className='yeQuote'>
                         <p>"{quote.quote}"</p>
                         <p style={{marginTop: '-2%'}}>{showCrazy ? '— KanYe' : '— ??' }</p>
                     </div>
-                    <Box mr={110}>
+                    <Box mr={105}>
                         {showCrazy === null &&
                             <>
-                            <h4>Which crazy said this?</h4>
+                            <h4 className='QA'>Which crazy has this quote?</h4>
                             <Stack direction="row" spacing={3} justifyContent="center">
                                 <Button style={{ borderRadius: 45, boxShadow: '0px 0px 8px rgba(0, 169, 0, 0.8)' }} variant="outlined" size="large" color="success" onClick={() => crazyAnswer('yeW')}>KanYe</Button>
                                 <Button style={{ borderRadius: 45, boxShadow: '0px 0px 8px rgba(0,169, 0, 0.8)' }} variant="outlined" size="large" color="success" onClick={() => crazyAnswer('yeL')}>Donald Trump</Button>
@@ -111,7 +115,7 @@ export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
                             </>
                         }
                         {showCrazy !== null &&
-                            <h4>KanYe</h4>
+                            <h4 className='QA'>KanYe</h4>
                         }
                         {showCrazy === 'winner' &&
                             <img src={yeW} style={{height: '18vmin', filter:'drop-shadow(0px 0px 18px rgba(0, 169, 0, 1))'  }} alt="ye" />
@@ -120,19 +124,19 @@ export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
                             <img src={ye} style={{height: '18vmin', filter:'drop-shadow(0px 0px 18px rgba(220, 0, 0, 1))' }} alt="ye" />
                         }
                     </Box>
-                </div>
+                </>
             )}
 
             {trumpQuote?.map(quote =>
-                <div className='quote'>
+                <>
                     <div className='yeQuote'>
-                        <p>"{quote}"</p>
+                        <p style={{padding: '0 2vh'}}>"{quote}"</p>
                         <p style={{marginTop: '-2%'}}>{showCrazy ? '— Donald Trump' : '— ??' }</p>
                     </div>
-                    <Box mr={110} >
+                    <Box mr={105} >
                         {showCrazy === null &&
                             <>
-                            <h4>Which crazy has this quote?</h4>
+                            <h4 className='QA'>Which crazy has this quote?</h4>
                             <Stack direction="row" spacing={3} justifyContent="center">
                                 <Button style={{ borderRadius: 45, boxShadow: '0px 0px 8px rgba(0, 169, 0, 0.8)' }} variant="outlined" size="large" color="success" onClick={() => crazyAnswer('trumpL')}>KanYe</Button>
                                 <Button style={{ borderRadius: 45, boxShadow: '0px 0px 8px rgba(0, 169, 0, 0.8)' }} variant="outlined" size="large" color="success" onClick={() => crazyAnswer('trumpW')}>Donald Trump</Button>
@@ -140,7 +144,7 @@ export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
                             </>
                         }
                         {showCrazy !== null &&
-                            <h4>Donald Trump</h4>
+                            <h4 className='QA'>Donald Trump</h4>
                         }
                         {showCrazy === 'winner' &&                      
                                 <img src={trumpW} style={{height: '18vmin', filter:'drop-shadow(0px 0px 18px rgba(0, 169, 0, 1))' }} alt="trump" />  
@@ -149,8 +153,11 @@ export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
                                 <img src={trumpL} style={{height: '18vmin', filter:'drop-shadow(0px 0px 18px rgba(220, 0, 0, 1))' }} alt="trump" />  
                         }
                     </Box>
-                </div>
+                </>
             )}
+            {showCrazy !== null &&
+                <Footer showStreak={showStreak} setShowStreak={setShowStreak} />
+            }
         </div>
     )
 }
