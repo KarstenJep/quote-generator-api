@@ -133,9 +133,9 @@ export default function HP({ hpQuote, showBook, setShowBook, showStreak, setShow
                         </Stack>
                     </>
                 }
-                <Box ml={110}>
+                <Box ml={110} >
                     { showBook !== null &&
-                        <h4>{hpQuote.book}</h4>
+                        <h4 style={{marginTop: '3%'}}>{hpQuote.book}</h4>
                     }
                     { showBook === "Loser" && 
                         <img src={HWMNBN} style={{ height: '16vmin', borderRadius: '5px', border: '2px red solid', boxShadow: '0px 0px 16px rgba(251, 0, 0, 0.8)' }} alt="VDMT" />
@@ -163,9 +163,7 @@ export default function HP({ hpQuote, showBook, setShowBook, showStreak, setShow
                     }
                 </Box>
                 {showBook !== null &&
-                    <Box mt={-2}>
                     <Footer showStreak={showStreak} setShowStreak={setShowStreak} streak={streak} wins={wins} total={total}/>
-                    </Box>
                 }
             </>
             }

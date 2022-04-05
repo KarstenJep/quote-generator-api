@@ -89,7 +89,7 @@ function App() {
 
   return (
     <div className="App" ref={confettiRef}>
-      <Header />
+      <Header showStreak={showStreak} wins={wins} total={total} />
       <Dashboard fetchCrazy={fetchCrazy} fetchLotr={fetchLotr} fetchHP={fetchHP} />
       <LotrQuote lotrQuote={lotrQuote} showMovie={showMovie} setShowMovie={setShowMovie} showStreak={showStreak} setShowStreak={setShowStreak} streak={streak} setStreak={setStreak} wins={wins} setWins={setWins} total={total} setTotal={setTotal}/>
       <CrazyQuote yeQuote={yeQuote} trumpQuote={trumpQuote} showCrazy={showCrazy} setShowCrazy={setShowCrazy} showStreak={showStreak} setShowStreak={setShowStreak} streak={streak} setStreak={setStreak} wins={wins} setWins={setWins} total={total} setTotal={setTotal}/>

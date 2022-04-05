@@ -85,7 +85,7 @@ export default function LotrQuote({ lotrQuote, showMovie, setShowMovie, showStre
                         <p>"{quote.dialog}"</p>
                         <p>— {quote.char}</p>
                     </div>
-                    <Box ml={4}>
+                    <Box ml={2}>
                     {showMovie === null &&
                         <>
                             <h4 className='QA'>Which film has this quote?</h4>

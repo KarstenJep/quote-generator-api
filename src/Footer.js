@@ -32,7 +32,6 @@ console.log(streak);
             <div style={{marginTop: '-22vh', color: 'white'}}>
                 <h5>Select another quote!</h5>
                 <h5 style={{ marginTop: '-4vh', color: getColor(), textShadow: getShadow() }}>Streak: {streak}</h5>
-                <h5 style={{ marginTop: '-4vh', color: getColor(), textShadow: getShadow() }}>Total: {wins} / {total}</h5>
             </div>
         </>
     )
