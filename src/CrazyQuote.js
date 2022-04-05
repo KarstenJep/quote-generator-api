@@ -20,7 +20,7 @@ import ivanka from './audio/ivanka.mp3';
 import wrong from './audio/Wrong3.mp3';
 import fakenews from './audio/fakenews.mp3';
 
-export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCrazy, showStreak, setShowStreak, streak, setStreak, wins, setWins, total, setTotal }) {
+export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCrazy, showStreak, setShowStreak, streak, setStreak, wins, setWins, total, setTotal, correctCRZY, setCorrectCRZY, incorrectCRZY, setIncorrectCRZY }) {
 
     const yW1 = new Audio(yeW1);
     const yW2 = new Audio(yeW2);
@@ -33,6 +33,7 @@ export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
     const [toggleLoser, setToggleLoser] = useState(false);
     const [toggleWinner, setToggleWinner] = useState(false);
 
+
     const crazyAnswer = (answer) => {
         setTotal(total + 1);
         if (answer === 'yeW') {
@@ -40,6 +41,7 @@ export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
             setShowStreak('crazy');
             setStreak(streak + 1);
             setWins(wins + 1);
+            setCorrectCRZY(correctCRZY + 1);
             setToggleWinner(!toggleWinner);
             emojisplosion({
                 emojiCount: 151,
@@ -53,16 +55,16 @@ export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
                 emojiCount: 151,
                 emojis: [ "🕶", "💥", "🎆", "🎉"],
             });
-            {toggleWinner ?
+            toggleWinner ?
                 yW1.play()
                 :
                 yW2.play()
-            }
         } else if (answer === 'trumpW') {
             setShowCrazy('winner');
             setShowStreak('crazy');
             setStreak(streak + 1); 
-            setWins(wins + 1);           
+            setWins(wins + 1);     
+            setCorrectCRZY(correctCRZY + 1);      
             setToggleWinner(!toggleWinner);
             emojisplosion({
                 emojiCount: 151,
@@ -76,31 +78,30 @@ export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
                 emojiCount: 151,
                 emojis: ["🍊", "🤡", "🎆", "🎉"],
             });
-            {toggleWinner ?
+            toggleWinner ?
                 tW1.play()
                 :
                 tW2.play()
-            }
         } else if (answer === 'yeL') {
             setShowCrazy('loser');
             setShowStreak('loser');
             setStreak(0);
+            setIncorrectCRZY(incorrectCRZY + 1);
             setToggleLoser(!toggleLoser);
-            {toggleLoser ? 
+            toggleLoser ? 
                 yl1.play()
                 :
                 yl2.play()
-            }
         } else if (answer === 'trumpL') {
             setShowCrazy('loser');
             setShowStreak('loser');
             setStreak(0);
+            setIncorrectCRZY(incorrectCRZY + 1);
             setToggleLoser(!toggleLoser);
-            {toggleLoser ? 
+            toggleLoser ? 
                 tL1.play()
                 :
                 tL2.play()
-            }
         }
     }
 

@@ -1,13 +1,13 @@
+import { useState, useRef, useEffect } from 'react';
+import Confetti from 'react-confetti'
+// Files
 import './App.css';
 import json from './HP.json'
-import { useState, useRef, useEffect } from 'react';
 import CrazyQuote from './CrazyQuote';
 import LotrQuote from './LotrQuote';
 import Dashboard from './Dashboard';
 import HP from './HPQuote';
 import Header from './Header';
-import Confetti from 'react-confetti'
-
 
 function App() {
 
@@ -23,6 +23,8 @@ function App() {
   const [wins, setWins] = useState(0);
   const [total, setTotal] = useState(0);
   const [showStreak, setShowStreak] = useState(null);
+  const [incorrectCRZY, setIncorrectCRZY] = useState(null);
+  const [correctCRZY, setCorrectCRZY] = useState(null);
   const [height, setHeight] = useState(null)
   const [width, setWidth] = useState(null)
   const confettiRef = useRef(null);
@@ -43,11 +45,10 @@ function App() {
     setHpQuote(null);
     setShowMovie(null);
     setShowBook(null);
-    {Math.random() > .5 ?
+    Math.random() > .5 ?
     fetchYe()
     :
     fetchTrump()
-    }
   }
 
   const fetchHP = async () => {
@@ -58,10 +59,6 @@ function App() {
     setShowMovie(null);
     setShowBook(null);
     setHpQuote(json[Math.floor(Math.random() * 38)])
-    // await fetch("https://www.stands4.com/services/v2/quotes.php")
-    //   .then((response) => response.json())
-    //   .then((data) => console.log([data]))
-    //   .catch(() => console.log('error'))
   }
 
   const fetchYe = async () => {
@@ -85,14 +82,14 @@ function App() {
   useEffect(() => {
     setHeight(confettiRef.current.clientHeight);
     setWidth(confettiRef.current.clientWidth);
-  })
+  }, [])
 
   return (
     <div className="App" ref={confettiRef}>
       <Header showStreak={showStreak} wins={wins} total={total} />
-      <Dashboard fetchCrazy={fetchCrazy} fetchLotr={fetchLotr} fetchHP={fetchHP} />
+      <Dashboard fetchCrazy={fetchCrazy} fetchLotr={fetchLotr} fetchHP={fetchHP} correctCRZY={correctCRZY} setCorrectCRZY={setCorrectCRZY} incorrectCRZY={incorrectCRZY} setIncorrectCRZY={setIncorrectCRZY}/>
       <LotrQuote lotrQuote={lotrQuote} showMovie={showMovie} setShowMovie={setShowMovie} showStreak={showStreak} setShowStreak={setShowStreak} streak={streak} setStreak={setStreak} wins={wins} setWins={setWins} total={total} setTotal={setTotal}/>
-      <CrazyQuote yeQuote={yeQuote} trumpQuote={trumpQuote} showCrazy={showCrazy} setShowCrazy={setShowCrazy} showStreak={showStreak} setShowStreak={setShowStreak} streak={streak} setStreak={setStreak} wins={wins} setWins={setWins} total={total} setTotal={setTotal}/>
+      <CrazyQuote yeQuote={yeQuote} trumpQuote={trumpQuote} showCrazy={showCrazy} setShowCrazy={setShowCrazy} showStreak={showStreak} setShowStreak={setShowStreak} streak={streak} setStreak={setStreak} wins={wins} setWins={setWins} total={total} setTotal={setTotal} correctCRZY={correctCRZY} setCorrectCRZY={setCorrectCRZY} incorrectCRZY={incorrectCRZY} setIncorrectCRZY={setIncorrectCRZY}/>
       <HP hpQuote={hpQuote} showBook={showBook} setShowBook={setShowBook} showStreak={showStreak} setShowStreak={setShowStreak} streak={streak} setStreak={setStreak} wins={wins} setWins={setWins} total={total} setTotal={setTotal}/>
       
       {showMovie !== null && showMovie !== 'loser' &&

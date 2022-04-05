@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import { useState } from 'react';
 import Footer from './Footer.js'
 // M-UI
 import Stack from '@mui/material/Stack';
@@ -34,46 +34,47 @@ export default function LotrQuote({ lotrQuote, showMovie, setShowMovie, showStre
     const [toggleFOTR, setToggleFOTR] = useState(false);
     const [toggleTTT, setToggleTTT] = useState(false);
     const [toggleROTK, setToggleROTK] = useState(false);
+    const [correct, setCorrect] = useState(null);
+    const [incorrect, setIncorrect] = useState(null);
 
     const movieAnswer = (answer) => {
         setTotal(total + 1);
-        if (answer == lotrQuote[0].movie) {
+        if (answer === lotrQuote[0].movie) {
             setShowMovie(answer);
             setShowStreak('lotr');
             setStreak(streak + 1);
             setWins(wins + 1);
+            setCorrect(correct + 1);
             if(answer === 'The Fellowship of the Ring '){
                 setToggleFOTR(!toggleFOTR);
-                {toggleFOTR ? 
+                toggleFOTR ? 
                     fotk1.play()
                     :
                     fotk2.play()
-                }
             } else if(answer === 'The Two Towers '){
                 setToggleTTT(!toggleTTT);
-                {toggleTTT ? 
+                toggleTTT ? 
                     ttt1.play()
                     :
                     ttt2.play()
-                }
             } else if(answer === 'The Return of the King '){
                 setToggleROTK(!toggleROTK);
-                {toggleROTK ? 
+                toggleROTK ? 
                     rotk1.play()
                     :
                     rotk2.play()
-                }
             }
         } else {
             setShowMovie('loser');
             setShowStreak('loser');
             setStreak(0);
+            setIncorrect(incorrect + 1);
             setToggleLoser(!toggleLoser);
-            {toggleLoser ? 
+            toggleLoser ? 
                 loser1.play()
                 :
-                loser2.play();
-            }
+                loser2.play()
+            
         }
     }
 
