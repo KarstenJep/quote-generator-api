@@ -7,9 +7,6 @@
     "@emotion/styled": "^11.8.1",
     "@material-ui/icons": "^4.11.2",
     "@mui/material": "^5.5.1",
-    "@testing-library/jest-dom": "^5.16.2",
-    "@testing-library/react": "^12.1.4",
-    "@testing-library/user-event": "^13.5.0",
     "canvas-confetti": "^1.5.1",
     "confetti-js": "^0.0.18",
     "emojisplosion": "^2.6.1",
@@ -18,8 +15,8 @@
     "react-confetti": "^6.0.1",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
-    "uifx": "^2.0.7",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "node": "^17.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
