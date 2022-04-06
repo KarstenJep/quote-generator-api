@@ -5,7 +5,7 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 // Images
-import FOTR from './Images/FOTR.jpg';
+import FOTR from './Images/fotr.jpg';
 import TTT from './Images/TTT.jpg';
 import ROTK from './Images/ROTK.jpg';
 import gollum from './Images/gollum.jpg';
