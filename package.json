@@ -10,15 +10,18 @@
     "canvas-confetti": "^1.5.1",
     "confetti-js": "^0.0.18",
     "emojisplosion": "^2.6.1",
+    "node": "^17.1.0",
     "random-lotr-movie-quote": "^1.1.1",
     "react": "^17.0.2",
     "react-confetti": "^6.0.1",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
     "web-vitals": "^2.1.4",
-    "node": "^17.1.0"
+    "gh-pages": "^6.1.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
