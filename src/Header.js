@@ -28,7 +28,7 @@ export default function Header({ showStreak, wins, total }){
     return (
         <header className="App-header">
           <h3 style={{marginBottom: '-8vh', marginRight: '-88%', color: getColor(), textShadow: getShadow() }}>Total: {wins} / {total}</h3>
-          <h1>What quote would you like today?</h1>
+          <h1>Pick a quote, any quote.</h1>
         </header>
     )
 }
