@@ -1,5 +1,5 @@
 {
-  "name": "https://karstenjep.github.io/quote-generator-api/",
+  "homepage": "https://karstenjep.github.io/quote-generator-api/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
