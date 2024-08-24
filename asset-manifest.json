@@ -1,7 +1,8 @@
 {
   "files": {
-    "main.css": "/quote-generator-api/static/css/main.f36126d9.css",
-    "main.js": "/quote-generator-api/static/js/main.a994d740.js",
+    "main.css": "/quote-generator-api/static/css/main.9d6006ca.css",
+    "main.js": "/quote-generator-api/static/js/main.5ae3c27e.js",
+    "static/media/backgroundMusic.mp3": "/quote-generator-api/static/media/backgroundMusic.7cf45c359283d1ff0d3e.mp3",
     "static/media/hp.png": "/quote-generator-api/static/media/hp.6a496aa4eb983e76abf7.png",
     "static/media/trumpW.png": "/quote-generator-api/static/media/trumpW.06b28d5a606f62e08f8a.png",
     "static/media/DH.jpg": "/quote-generator-api/static/media/DH.1b746b74716d71d781d0.jpg",
@@ -47,11 +48,11 @@
     "static/media/Wrong3.mp3": "/quote-generator-api/static/media/Wrong3.f9cfd5469ac4d1cf866b.mp3",
     "static/media/fakenews.mp3": "/quote-generator-api/static/media/fakenews.44331bba394130932cc4.mp3",
     "index.html": "/quote-generator-api/index.html",
-    "main.f36126d9.css.map": "/quote-generator-api/static/css/main.f36126d9.css.map",
-    "main.a994d740.js.map": "/quote-generator-api/static/js/main.a994d740.js.map"
+    "main.9d6006ca.css.map": "/quote-generator-api/static/css/main.9d6006ca.css.map",
+    "main.5ae3c27e.js.map": "/quote-generator-api/static/js/main.5ae3c27e.js.map"
   },
   "entrypoints": [
-    "static/css/main.f36126d9.css",
-    "static/js/main.a994d740.js"
+    "static/css/main.9d6006ca.css",
+    "static/js/main.5ae3c27e.js"
   ]
 }
