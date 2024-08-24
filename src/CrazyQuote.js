@@ -145,7 +145,7 @@ export default function CrazyQuote({ yeQuote, trumpQuote, showCrazy, setShowCraz
                     <Box mr={105} >
                         {showCrazy === null &&
                             <>
-                            <h4 className='QA'>Which crazy has this quote?</h4>
+                            <h4 className='QA'>Which crazy said this quote?</h4>
                             <Stack direction="row" spacing={3} justifyContent="center">
                                 <Button style={{ borderRadius: 45, boxShadow: '0px 0px 8px rgba(0, 169, 0, 0.8)' }} variant="outlined" size="large" color="success" onClick={() => crazyAnswer('trumpL')}>KanYe</Button>
                                 <Button style={{ borderRadius: 45, boxShadow: '0px 0px 8px rgba(0, 169, 0, 0.8)' }} variant="outlined" size="large" color="success" onClick={() => crazyAnswer('trumpW')}>Donald Trump</Button>

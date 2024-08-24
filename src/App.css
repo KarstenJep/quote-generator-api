@@ -9,15 +9,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
- 
 }
 
 .App {
   text-align: center;
   background-color: #282c34;
   height: 100vh;
-  background: url('https://i.ytimg.com/vi/JxoHHTcOSCQ/maxresdefault.jpg');
-  background-size: cover;
+  background: url('/src/Images/space.jpg');
+  background-size:auto;
 }
 
 .App-logo {
